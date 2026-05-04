@@ -1,21 +1,25 @@
 const ENVIRONMENTS = {
   "Deep Ocean": {
-    bg: "assets/env-deep-ocean.svg",
+    bg: "assets/pixel/chambers/deep-ocean.svg",
+    card: "assets/pixel/env_cards/deep-ocean.svg",
     danger: "Crushing pressure and darkness",
     weights: { oxygen: 14, pressure: 13, cold: 9, gill: 12, wing: -8, heat: -7 }
   },
   "Desert Heat": {
-    bg: "assets/env-desert-heat.svg",
+    bg: "assets/pixel/chambers/desert-heat.svg",
+    card: "assets/pixel/env_cards/desert-heat.svg",
     danger: "Scorching heat and drought",
     weights: { heat: 14, water: 12, metabolism: 10, cold: -9, gill: -7, pressure: -4 }
   },
   "Skyreach": {
-    bg: "assets/env-skyreach.svg",
+    bg: "assets/pixel/chambers/skyreach.svg",
+    card: "assets/pixel/env_cards/skyreach.svg",
     danger: "Vertical cliffs and thin air",
     weights: { wing: 14, balance: 11, vision: 9, pressure: 5, strength: 4, water: -6 }
   },
   "Gravemaw": {
-    bg: "assets/env-gravemaw.svg",
+    bg: "assets/pixel/chambers/gravemaw.svg",
+    card: "assets/pixel/env_cards/gravemaw.svg",
     danger: "High gravity, unstable terrain",
     weights: { strength: 14, reflex: 11, bone: 9, toughness: 10, wing: -7, water: -3 }
   }
@@ -35,7 +39,9 @@ let state = {
   autoTimer: null
 };
 
-const spriteByGeneration = (g) => g >= 50 ? "assets/subject-gen50.svg" : g >= 35 ? "assets/subject-gen35.svg" : g >= 20 ? "assets/subject-gen20.svg" : g >= 10 ? "assets/subject-gen10.svg" : "assets/subject-gen1.svg";
+const stageByGeneration = (g) => g >= 50 ? 50 : g >= 35 ? 35 : g >= 20 ? 20 : g >= 10 ? 10 : 1;
+const slugByEnv = {"Deep Ocean":"deep-ocean","Desert Heat":"desert-heat","Skyreach":"skyreach","Gravemaw":"gravemaw"};
+const spriteByGeneration = (g, envName = state.currentEnv) => `assets/pixel/sprites/${slugByEnv[envName]}-gen${stageByGeneration(g)}.svg`;
 const $ = (id) => document.getElementById(id);
 
 function appendLog(message, type = "") {
@@ -84,7 +90,7 @@ function renderEnvironmentCards() {
   Object.entries(ENVIRONMENTS).forEach(([name, env]) => {
     const card = document.createElement("article");
     card.className = `env-card${name === state.currentEnv ? " active" : ""}`;
-    card.innerHTML = `<img src="${env.bg}" alt="${name}"><b>${name}</b><div class="desc">${env.danger}</div>`;
+    card.innerHTML = `<img src="${env.card}" alt="${name}"><b>${name}</b><div class="desc">${env.danger}</div>`;
     card.addEventListener("click", () => {
       state.currentEnv = name;
       appendLog(`Environment switched to ${name}.`);
@@ -112,7 +118,7 @@ function renderTimeline() {
   timeline.innerHTML = "";
   [1, 10, 20, 35, 50].filter((milestone) => state.generation >= milestone).forEach((milestone) => {
     const fig = document.createElement("figure");
-    fig.innerHTML = `<img src="${spriteByGeneration(milestone)}" alt="Gen ${milestone}"><figcaption>Gen ${milestone}</figcaption>`;
+    fig.innerHTML = `<img src="${spriteByGeneration(milestone, state.currentEnv)}" alt="Gen ${milestone}"><figcaption>Gen ${milestone}</figcaption>`;
     timeline.append(fig);
   });
 }
