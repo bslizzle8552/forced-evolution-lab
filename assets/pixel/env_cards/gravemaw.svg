@@ -1,0 +1,6 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 180' width='320' height='180' shape-rendering='crispEdges'>
+<defs><linearGradient id='g' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#5b376f'/><stop offset='1' stop-color='#21132d'/></linearGradient></defs>
+<rect width='320' height='180' fill='url(#g)'/>
+<circle cx='245' cy='44' r='22' fill='#a16ac0' opacity='.8'/>
+<polygon points='0,150 50,110 110,150 170,100 230,150 320,105 320,180 0,180' fill='#21132d'/>
+</svg>
