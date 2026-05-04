@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#05080d" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <title>Forced Evolution Lab</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="panel chamber-panel">
+      <header class="title-row">
+        <div>
+          <h1>Forced Evolution Lab</h1>
+          <p>Subject: 77-A • Protocol: Adaptive Pressure</p>
+        </div>
+        <div class="hud-mini"><span id="hudEnv">GRAVEMAW</span><span id="hudGen">GEN 1</span></div>
+      </header>
+      <div class="chamber-wrap">
+        <div id="chamber" class="chamber">
+          <img id="subjectSprite" src="assets/subject-gen1.svg" alt="Subject specimen" />
+        </div>
+      </div>
+      <div class="stat-grid">
+        <div class="stat"><label>Generation</label><strong id="generation">1</strong></div>
+        <div class="stat"><label>Survival Probability</label><strong id="survival">41%</strong></div>
+        <div class="stat"><label>Mutation Index</label><strong id="mutation">12%</strong></div>
+        <div class="stat"><label>Stability</label><strong id="stability">74%</strong></div>
+      </div>
+    </section>
+
+    <section class="panel control-panel">
+      <h2>Environment Selection</h2>
+      <div id="envGrid" class="env-grid"></div>
+      <div class="current-env">
+        <h3>Current Environment</h3>
+        <p id="envBlurb"></p>
+      </div>
+
+      <h3>Trait Development</h3>
+      <div id="traitBars" class="traits"></div>
+
+      <div class="controls">
+        <button id="run1">Run 1 Gen</button>
+        <button id="run10">Run 10 Gens</button>
+        <button id="auto">Auto-Evolve</button>
+        <button id="reset" class="danger">Reset Subject</button>
+        <button id="save" class="success">Save Specimen</button>
+      </div>
+    </section>
+
+    <section class="panel lower-panel">
+      <section>
+        <h3>Experiment Log</h3>
+        <ul id="log" class="log"></ul>
+      </section>
+      <section>
+        <h3>Evolution Timeline</h3>
+        <div id="timeline" class="timeline"></div>
+      </section>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
