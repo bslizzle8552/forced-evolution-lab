@@ -1,25 +1,25 @@
 const ENVIRONMENTS = {
   "Deep Ocean": {
-    bg: "assets/pixel/chambers/deep-ocean.svg",
-    card: "assets/pixel/env_cards/deep-ocean.svg",
+    bg: "assets/pixel/chambers/deep-ocean.png",
+    card: "assets/pixel/env_cards/deep-ocean.png",
     danger: "Crushing pressure and darkness",
     weights: { oxygen: 14, pressure: 13, cold: 9, gill: 12, wing: -8, heat: -7 }
   },
   "Desert Heat": {
-    bg: "assets/pixel/chambers/desert-heat.svg",
-    card: "assets/pixel/env_cards/desert-heat.svg",
+    bg: "assets/pixel/chambers/desert-heat.png",
+    card: "assets/pixel/env_cards/desert-heat.png",
     danger: "Scorching heat and drought",
     weights: { heat: 14, water: 12, metabolism: 10, cold: -9, gill: -7, pressure: -4 }
   },
   "Skyreach": {
-    bg: "assets/pixel/chambers/skyreach.svg",
-    card: "assets/pixel/env_cards/skyreach.svg",
+    bg: "assets/pixel/chambers/skyreach.png",
+    card: "assets/pixel/env_cards/skyreach.png",
     danger: "Vertical cliffs and thin air",
     weights: { wing: 14, balance: 11, vision: 9, pressure: 5, strength: 4, water: -6 }
   },
   "Gravemaw": {
-    bg: "assets/pixel/chambers/gravemaw.svg",
-    card: "assets/pixel/env_cards/gravemaw.svg",
+    bg: "assets/pixel/chambers/gravemaw.png",
+    card: "assets/pixel/env_cards/gravemaw.png",
     danger: "High gravity, unstable terrain",
     weights: { strength: 14, reflex: 11, bone: 9, toughness: 10, wing: -7, water: -3 }
   }
@@ -41,7 +41,7 @@ let state = {
 
 const stageByGeneration = (g) => g >= 50 ? 50 : g >= 35 ? 35 : g >= 20 ? 20 : g >= 10 ? 10 : 1;
 const slugByEnv = {"Deep Ocean":"deep-ocean","Desert Heat":"desert-heat","Skyreach":"skyreach","Gravemaw":"gravemaw"};
-const spriteByGeneration = (g, envName = state.currentEnv) => `assets/pixel/sprites/${slugByEnv[envName]}-gen${stageByGeneration(g)}.svg`;
+const spriteByGeneration = (g, envName = state.currentEnv) => `assets/pixel/sprites/${slugByEnv[envName]}-gen${stageByGeneration(g)}.png`;
 const $ = (id) => document.getElementById(id);
 
 function appendLog(message, type = "") {
